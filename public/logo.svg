@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 40" fill="none" role="img" aria-label="Nexvanta">
+  <defs>
+    <linearGradient id="nexMark" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D2D9F8"/>
+      <stop offset="0.45" stop-color="#B7BAF6"/>
+      <stop offset="1" stop-color="#787AAB"/>
+    </linearGradient>
+  </defs>
+  <!-- Stylized N mark derived from the concept logo mark -->
+  <path
+    d="M8 32V8h6.4l9.2 14.8V8H30v24h-6.4L14.4 17.2V32H8z"
+    fill="url(#nexMark)"
+  />
+  <text
+    x="42"
+    y="27"
+    fill="#FFFFFF"
+    font-family="Space Grotesk, Manrope, system-ui, sans-serif"
+    font-size="22"
+    font-weight="600"
+    letter-spacing="-0.02em"
+  >Nexvanta</text>
+</svg>
