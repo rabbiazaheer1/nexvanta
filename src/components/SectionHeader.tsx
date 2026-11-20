@@ -14,14 +14,14 @@ export function SectionHeader({
 }) {
   if (align === 'split') {
     return (
-      <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+      <div className="mb-5 flex flex-col gap-2 md:mb-6 md:flex-row md:items-end md:justify-between md:gap-6">
         <Reveal mode="left">
           <p className="section-eyebrow">{eyebrow}</p>
           <h2 className="section-title max-w-xl">{title}</h2>
         </Reveal>
         {lead && (
           <Reveal mode="right" delay={0.06}>
-            <div className="section-lead md:text-right">{lead}</div>
+            <div className="section-lead md:max-w-sm md:text-right">{lead}</div>
           </Reveal>
         )}
       </div>
@@ -29,7 +29,7 @@ export function SectionHeader({
   }
 
   return (
-    <Reveal mode="left" className="mb-8">
+    <Reveal mode="left" className="mb-5 md:mb-6">
       <p className="section-eyebrow">{eyebrow}</p>
       <h2 className="section-title">{title}</h2>
       {lead && <p className="section-lead">{lead}</p>}

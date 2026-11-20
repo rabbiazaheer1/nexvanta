@@ -56,13 +56,13 @@ export function TechStack() {
         />
 
         <div className="nx-panel overflow-hidden">
-          <div className="relative grid items-center gap-6 p-5 md:grid-cols-[1fr_1fr] md:p-7">
+          <div className="relative grid items-center gap-4 p-4 sm:gap-5 sm:p-5 md:grid-cols-[1fr_1fr] md:p-6">
             <div className="pointer-events-none absolute inset-0 opacity-25">
               <img src={techBg} alt="" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f8f6f2_20%,rgba(248,246,242,0.92)_70%)]" />
             </div>
 
-            <Reveal mode="scale" className="relative mx-auto h-[280px] w-full max-w-[340px] sm:h-[320px]">
+            <Reveal mode="scale" className="relative mx-auto h-[240px] w-full max-w-[300px] sm:h-[280px] sm:max-w-[320px]">
               <div
                 className="absolute inset-[8%] rounded-full border border-dashed border-[rgba(0,72,88,0.16)]"
                 style={{ animation: reduce ? undefined : 'orbit-spin 36s linear infinite' }}

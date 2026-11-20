@@ -82,7 +82,7 @@ function ServiceHero({ service }: { service: Service }) {
         </>
       )}
 
-      <div className="container-nx relative z-[2] py-10 md:py-14">
+      <div className="container-nx relative z-[2] py-7 md:py-10">
         <Link
           to="/#services"
           className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-md transition hover:bg-white/20"
@@ -91,7 +91,7 @@ function ServiceHero({ service }: { service: Service }) {
           All services
         </Link>
 
-        <div className="mt-8 grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="mt-6 grid items-end gap-7 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8">
           <div>
             <motion.p
               className="inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.2em] text-[#ffb08a]"
@@ -316,6 +316,7 @@ function OfferingsLayout({ service }: { service: Service }) {
 
 export function ServiceDetailPage() {
   const { slug } = useParams()
+  const reduce = useReducedMotion()
   const service = slug ? getServiceBySlug(slug) : undefined
 
   if (!service) {
@@ -323,7 +324,6 @@ export function ServiceDetailPage() {
   }
 
   const others = services.filter((item) => item.slug !== service.slug)
-  const reduce = useReducedMotion()
 
   return (
     <main>
@@ -349,7 +349,7 @@ export function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden section-pad !py-12 bg-[var(--brand-slate)]">
+      <section className="relative overflow-hidden section-pad !py-8 md:!py-10 bg-[var(--brand-slate)]">
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           style={{
@@ -416,7 +416,7 @@ export function ServiceDetailPage() {
         </div>
       </section>
 
-      <section className="section-pad !pt-6 !pb-14 bg-[var(--background-primary)]">
+      <section className="section-pad !pt-4 !pb-10 bg-[var(--background-primary)]">
         <div className="container-nx">
           <Reveal mode="left">
             <p className="section-eyebrow">Keep exploring</p>

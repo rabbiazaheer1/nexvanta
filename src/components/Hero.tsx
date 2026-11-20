@@ -7,13 +7,13 @@ export function Hero() {
   const reduce = useReducedMotion()
 
   return (
-    <section id="home" className="relative overflow-hidden bg-[var(--gradient-hero)] pt-[5.2rem]">
+    <section id="home" className="relative overflow-hidden bg-[var(--gradient-hero)] pt-[4.9rem]">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute left-[-8%] top-20 h-52 w-52 rounded-full bg-[rgba(0,88,104,0.07)] blur-[90px]" />
         <div className="absolute right-[-6%] top-16 h-56 w-56 rounded-full bg-[rgba(248,88,16,0.06)] blur-[90px]" />
       </div>
 
-      <div className="container-nx relative z-[2] grid items-center gap-6 py-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-10">
+      <div className="container-nx relative z-[2] grid items-center gap-5 py-5 sm:py-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-7">
         <div className="max-w-lg">
           <motion.div
             initial={{ opacity: 0, y: reduce ? 0 : 8 }}
@@ -96,7 +96,7 @@ export function Hero() {
               <img
                 src={heroRobot}
                 alt="Friendly Nexvanta tech robot"
-                className="mx-auto h-auto max-h-[340px] w-full object-contain mix-blend-multiply"
+                className="mx-auto h-auto max-h-[260px] w-full object-contain mix-blend-multiply sm:max-h-[300px] lg:max-h-[320px]"
                 decoding="async"
               />
             </motion.div>

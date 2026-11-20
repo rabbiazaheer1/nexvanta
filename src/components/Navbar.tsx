@@ -33,7 +33,7 @@ export function Navbar() {
       let current = '#home'
       for (const id of ids) {
         const el = document.getElementById(id)
-        if (el && el.getBoundingClientRect().top <= 120) current = `#${id}`
+        if (el && el.getBoundingClientRect().top <= 100) current = `#${id}`
       }
       setActive(current)
     }
@@ -94,26 +94,37 @@ export function Navbar() {
             if ('children' in link && link.children) {
               return (
                 <div key={link.label} className="relative" ref={dropdownRef}>
-                  <button
-                    type="button"
-                    className={`relative inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors ${
+                  <div
+                    className={`relative inline-flex items-center rounded-full text-[0.82rem] font-semibold transition-colors ${
                       isActive(link.href)
                         ? 'text-[var(--brand-teal)]'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--brand-teal)]'
+                        : 'text-[var(--text-secondary)]'
                     }`}
-                    aria-expanded={servicesOpen}
-                    aria-controls={servicesId}
-                    onClick={() => setServicesOpen((v) => !v)}
                   >
-                    {link.label}
-                    <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                    <Link
+                      to={link.href}
+                      className="rounded-l-full px-3 py-1.5 hover:text-[var(--brand-teal)]"
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className="rounded-r-full py-1.5 pr-2.5 pl-0.5 hover:text-[var(--brand-teal)]"
+                      aria-label="Open services menu"
+                      aria-expanded={servicesOpen}
+                      aria-controls={servicesId}
+                      onClick={() => setServicesOpen((v) => !v)}
+                    >
+                      <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+                    </button>
                     {isActive(link.href) && (
                       <motion.span
                         layoutId="nav-dot"
                         className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
                       />
                     )}
-                  </button>
+                  </div>
                   <AnimatePresence>
                     {servicesOpen && (
                       <motion.div
@@ -125,6 +136,14 @@ export function Navbar() {
                         transition={{ duration: 0.18 }}
                         className="absolute left-0 top-full mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-[var(--border-color)] bg-white/95 p-1.5 shadow-[0_18px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl"
                       >
+                        <Link
+                          to={link.href}
+                          role="menuitem"
+                          className="block rounded-xl px-3 py-2 text-sm font-bold text-[var(--brand-teal)] hover:bg-[rgba(0,72,88,0.06)]"
+                          onClick={() => setServicesOpen(false)}
+                        >
+                          All services
+                        </Link>
                         {link.children.map((child) => (
                           <Link
                             key={child.label}
@@ -167,7 +186,7 @@ export function Navbar() {
 
         <div className="hidden lg:block">
           <Link to="/#contact" className="btn-primary !px-4 !py-2 text-[0.8rem]">
-            Start Free Trial
+            Get in Touch
           </Link>
         </div>
 
@@ -196,17 +215,26 @@ export function Navbar() {
                 if ('children' in link && link.children) {
                   return (
                     <div key={link.label}>
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between rounded-xl px-3 py-2.5 text-left text-sm font-semibold text-[var(--brand-teal)]"
-                        aria-expanded={mobileServicesOpen}
-                        onClick={() => setMobileServicesOpen((v) => !v)}
-                      >
-                        {link.label}
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`}
-                        />
-                      </button>
+                      <div className="flex items-center gap-1">
+                        <Link
+                          to={link.href}
+                          className="flex-1 rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--brand-teal)]"
+                          onClick={closeMobile}
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          type="button"
+                          className="rounded-xl px-3 py-2.5 text-[var(--brand-teal)]"
+                          aria-label="Toggle services list"
+                          aria-expanded={mobileServicesOpen}
+                          onClick={() => setMobileServicesOpen((v) => !v)}
+                        >
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform ${mobileServicesOpen ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                      </div>
                       <AnimatePresence>
                         {mobileServicesOpen && (
                           <motion.div
@@ -243,7 +271,7 @@ export function Navbar() {
                 )
               })}
               <Link to="/#contact" className="btn-primary mt-2 w-full text-sm" onClick={closeMobile}>
-                Start Free Trial
+                Get in Touch
               </Link>
             </nav>
           </motion.div>

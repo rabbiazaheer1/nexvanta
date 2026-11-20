@@ -11,7 +11,12 @@ export const company = {
   country: 'United Kingdom',
   hours: 'Always open',
   description:
-    'Nexvanta helps businesses grow in the digital world with smart AI technology, custom web and mobile applications, and digital marketing strategies focused on real outcomes.',
+    'Nexvanta helps businesses grow in the digital world with smart AI technology, custom web and mobile apps, and digital marketing strategies that really work.',
+  about: [
+    'Nexvanta is all about helping businesses grow and succeed in today’s digital world. We use smart AI technology, build custom web and mobile apps, and create digital marketing strategies that really work.',
+    'We don’t just deliver services — we work closely with you to understand your goals and create solutions that make your business stronger and faster. Whether it’s automating tasks, building great user experiences, or growing your online presence, Nexvanta is here to help you win.',
+    'Our mission is simple: to be the trusted partner that helps you navigate the digital future with confidence and achieve real, lasting results.',
+  ],
   linkedin: 'https://www.linkedin.com/company/nexvanta',
   facebook: 'https://www.facebook.com/people/Nexvanta/61578207356921/',
 } as const

@@ -30,7 +30,7 @@ export function Process() {
         />
 
         <div ref={ref} className="nx-panel overflow-hidden">
-          <div className="nx-media !rounded-none !border-0 min-h-[220px] md:min-h-[260px]">
+          <div className="relative h-32 overflow-hidden sm:h-36 md:h-40">
             <img
               src={processPlayground}
               alt=""
@@ -38,7 +38,7 @@ export function Process() {
               className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,246,242,0.18)_0%,rgba(248,246,242,0.7)_65%,#fff_100%)]" />
-            <div className="relative z-[1] flex min-h-[220px] items-end p-5 md:min-h-[260px] md:p-6">
+            <div className="relative z-[1] flex h-full items-end p-4 md:p-5">
               <div className="nx-chip !bg-white/90">
                 <span className="h-2 w-2 rounded-full bg-[var(--brand-teal)]" />
                 Nexvanta playground · step by step
@@ -46,7 +46,7 @@ export function Process() {
             </div>
           </div>
 
-          <div className="bg-white px-4 pb-5 pt-3 md:px-5 md:pb-6">
+          <div className="bg-white px-3.5 pb-4 pt-3 sm:px-4 md:px-5 md:pb-5">
             <div className="relative mb-4 hidden h-1.5 overflow-hidden rounded-full bg-[rgba(0,72,88,0.1)] lg:block">
               <motion.div
                 className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#004858,#f85810)]"

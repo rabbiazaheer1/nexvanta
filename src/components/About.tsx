@@ -9,7 +9,7 @@ export function About() {
   return (
     <section id="about" className="section-pad relative overflow-hidden bg-[var(--background-primary)]">
       <div className="container-nx relative">
-        <div className="nx-media min-h-[420px] md:min-h-[460px]">
+        <div className="nx-media overflow-hidden">
           <img
             src={aboutBg}
             alt=""
@@ -19,18 +19,20 @@ export function About() {
           <div className="nx-media-overlay" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_35%,rgba(248,88,16,0.16),transparent_40%)]" />
 
-          <div className="relative z-[1] flex min-h-[420px] flex-col justify-end p-6 md:min-h-[460px] md:max-w-[58%] md:justify-center md:p-9">
+          <div className="relative z-[1] grid gap-6 p-5 sm:p-6 md:grid-cols-[1.15fr_0.85fr] md:items-end md:p-8 lg:p-9">
             <Reveal mode="left">
               <p className="section-eyebrow !border-white/25 !bg-white/15 !text-white before:!bg-[var(--brand-orange)]">
                 Meet Nexvanta
               </p>
-              <h2 className="mt-4 font-[family-name:var(--font-display)] text-[clamp(1.8rem,3.6vw,2.7rem)] font-extrabold leading-[1.08] tracking-tight text-white">
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[clamp(1.65rem,3.4vw,2.45rem)] font-extrabold leading-[1.08] tracking-tight text-white">
                 We make technology feel <span className="text-[var(--brand-orange)]">extraordinary</span>.
               </h2>
-              <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-white/80">
-                {company.description}
-              </p>
-              <div className="mt-5 flex flex-wrap gap-2">
+              <div className="mt-3 max-w-xl space-y-2.5 text-[0.92rem] leading-relaxed text-white/80">
+                {company.about.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
                 {['AI', 'Web', 'Mobile', 'Marketing'].map((tag, i) => (
                   <motion.span
                     key={tag}
@@ -45,10 +47,12 @@ export function About() {
                 ))}
               </div>
             </Reveal>
-          </div>
 
-          <div className="absolute bottom-5 right-5 hidden rounded-2xl border border-white/20 bg-white/12 px-4 py-3 text-sm font-bold text-white backdrop-blur md:block">
-            {company.tagline}
+            <div className="hidden justify-end md:flex">
+              <div className="rounded-2xl border border-white/20 bg-white/12 px-4 py-3 text-sm font-bold text-white backdrop-blur">
+                {company.tagline}
+              </div>
+            </div>
           </div>
         </div>
       </div>

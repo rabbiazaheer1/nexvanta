@@ -22,7 +22,7 @@ export function WhyChoose() {
         />
 
         <div className="nx-panel overflow-hidden">
-          <div className="nx-media !rounded-none !border-0 min-h-[240px] md:min-h-[280px]">
+          <div className="relative h-32 overflow-hidden sm:h-36 md:h-40">
             <img
               src={whyBg}
               alt=""
@@ -31,7 +31,7 @@ export function WhyChoose() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,246,242,0.2)_0%,rgba(248,246,242,0.72)_70%,#fff_100%)]" />
 
-            <div className="relative z-[1] flex min-h-[240px] items-end gap-2 p-5 md:min-h-[280px] md:p-6">
+            <div className="relative z-[1] flex h-full flex-wrap items-end gap-2 p-4 md:p-5">
               {['Tailored', 'Innovation', 'Scale', 'Partnership'].map((label, i) => (
                 <motion.span
                   key={label}
@@ -48,17 +48,17 @@ export function WhyChoose() {
             </div>
           </div>
 
-          <Stagger className="grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-4 md:p-5" stagger={0.07}>
+          <Stagger className="grid gap-3 p-3.5 sm:grid-cols-2 sm:p-4 lg:grid-cols-4 md:p-5" stagger={0.07}>
             {whyChoose.map((item, index) => (
               <StaggerItem key={item.title} mode="up">
-                <article className="nx-card h-full p-4">
+                <article className="nx-card h-full p-3.5 sm:p-4">
                   <span className="font-[family-name:var(--font-display)] text-2xl font-extrabold text-[rgba(0,72,88,0.12)]">
                     0{index + 1}
                   </span>
                   <h3 className="mt-1 font-[family-name:var(--font-display)] text-base font-bold text-[var(--brand-slate)]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--text-secondary)]">
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-secondary)]">
                     {item.description}
                   </p>
                 </article>

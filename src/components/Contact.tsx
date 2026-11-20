@@ -61,15 +61,16 @@ export function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          name: values.name,
-          email: values.email,
-          phone: values.phone || 'Not provided',
-          company: values.companyName || 'Not provided',
-          message: values.details,
-          _replyto: values.email,
-          _subject: `Nexvanta inquiry from ${values.name}`,
+          name: values.name.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim() || 'Not provided',
+          company: values.companyName.trim() || 'Not provided',
+          message: values.details.trim(),
+          _replyto: values.email.trim(),
+          _subject: `Nexvanta inquiry from ${values.name.trim()}`,
           _template: 'table',
           _captcha: 'false',
+          _honey: '',
         }),
       })
 
@@ -103,9 +104,9 @@ export function Contact() {
           align="split"
         />
 
-        <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal mode="left">
-            <aside className="nx-panel h-full p-6 md:p-7">
+            <aside className="nx-panel h-full p-5 md:p-6">
               <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
                 Get in touch
               </p>
@@ -116,7 +117,7 @@ export function Contact() {
                 Based in the United Kingdom and ready to collaborate with ambitious teams worldwide.
               </p>
 
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-4 space-y-2.5">
                 <li>
                   <div className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5">
                     <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(0,72,88,0.08)] text-[var(--brand-teal)]">
@@ -227,7 +228,7 @@ export function Contact() {
 
           <Reveal mode="right" delay={0.06}>
             <form
-              className="nx-panel h-full space-y-4 p-6 md:p-8"
+              className="nx-panel h-full space-y-3.5 p-5 md:space-y-4 md:p-6"
               onSubmit={onSubmit}
               noValidate
             >

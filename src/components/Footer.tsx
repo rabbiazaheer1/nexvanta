@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-[var(--brand-teal)] text-[var(--text-on-dark)]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(248,88,16,0.55),transparent)]" />
 
-      <div className="container-nx grid gap-10 py-10 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1.1fr]">
+      <div className="container-nx grid gap-7 py-8 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1.1fr] lg:gap-8 lg:py-9">
         <div>
           <div className="inline-flex rounded-xl bg-[var(--background-primary)] px-2 py-1.5">
             <Logo />
