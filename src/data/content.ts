@@ -1,10 +1,16 @@
 export const company = {
   name: 'Nexvanta',
   tagline: 'Innovate. Automate. Elevate.',
-  email: 'info@nexvanta.io',
+  email: 'info@nexvanta.uk',
+  phone: '+44 7343 064274',
+  phoneHref: 'tel:+447343064274',
+  location: 'London, United Kingdom',
+  country: 'United Kingdom',
+  hours: 'Always open',
   description:
     'Nexvanta helps businesses grow in the digital world with smart AI technology, custom web and mobile applications, and digital marketing strategies focused on real outcomes.',
   linkedin: 'https://www.linkedin.com/company/nexvanta',
+  facebook: 'https://www.facebook.com/people/Nexvanta/61578207356921/',
 } as const
 
 export const navLinks = [

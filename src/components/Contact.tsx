@@ -1,6 +1,6 @@
-import { ArrowRight, Mail } from 'lucide-react'
+import { ArrowRight, Clock3, Mail, MapPin, Phone } from 'lucide-react'
 import { useState, type FormEvent, type ReactNode } from 'react'
-import { FaLinkedinIn } from 'react-icons/fa6'
+import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
 import { company, CONTACT_FORM_ENDPOINT, serviceOptions } from '../data/content'
 import { Reveal } from './Reveal'
 import { SectionHeader } from './SectionHeader'
@@ -37,40 +37,6 @@ function validate(values: FormState): FieldErrors {
   return errors
 }
 
-function ContactSchematic() {
-  return (
-    <svg
-      viewBox="0 0 420 480"
-      className="mx-auto h-auto w-full max-w-[360px]"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <rect x="48" y="390" width="324" height="48" rx="18" stroke="#7eb8c4" strokeWidth="2.5" fill="#f7fbfd" />
-      <rect x="70" y="78" width="280" height="300" rx="22" stroke="#5fa0ae" strokeWidth="2.5" fill="#f4fafb" />
-      <rect x="98" y="108" width="120" height="90" rx="12" stroke="#5fa0ae" strokeWidth="2" fill="#eaf5f7" />
-      <circle cx="158" cy="153" r="28" stroke="#5fa0ae" strokeWidth="2" />
-      <circle cx="158" cy="153" r="12" stroke="#004858" strokeWidth="2" />
-      <rect x="236" y="112" width="86" height="40" rx="8" stroke="#5fa0ae" strokeWidth="2" fill="#fff" />
-      <text x="248" y="137" fill="#004858" fontSize="14" fontFamily="Outfit, sans-serif" fontWeight="700">
-        NX-01
-      </text>
-      <rect x="236" y="164" width="86" height="28" rx="8" stroke="#5fa0ae" strokeWidth="2" />
-      <path d="M110 230h200" stroke="#5fa0ae" strokeWidth="2" strokeDasharray="5 5" />
-      <rect x="110" y="248" width="70" height="70" rx="10" stroke="#5fa0ae" strokeWidth="2" fill="#fff" />
-      <path d="M125 283h40M145 263v40" stroke="#F85810" strokeWidth="2.5" strokeLinecap="round" />
-      <rect x="196" y="248" width="104" height="28" rx="8" stroke="#5fa0ae" strokeWidth="2" />
-      <rect x="196" y="288" width="104" height="28" rx="8" stroke="#5fa0ae" strokeWidth="2" />
-      <circle cx="320" cy="200" r="34" stroke="#5fa0ae" strokeWidth="2.5" fill="#eaf5f7" />
-      <circle cx="320" cy="200" r="18" stroke="#004858" strokeWidth="2" />
-      <path d="M320 170v-28M334 178l18-14M306 178l-18-14" stroke="#7eb8c4" strokeWidth="2" strokeLinecap="round" />
-      <rect x="128" y="340" width="164" height="18" rx="6" stroke="#5fa0ae" strokeWidth="2" fill="#fff" />
-      <circle cx="96" cy="360" r="8" fill="#F85810" />
-      <circle cx="324" cy="360" r="8" fill="#004858" />
-    </svg>
-  )
-}
-
 export function Contact() {
   const [values, setValues] = useState<FormState>(initial)
   const [errors, setErrors] = useState<FieldErrors>({})
@@ -92,7 +58,7 @@ export function Contact() {
     if (!CONTACT_FORM_ENDPOINT) {
       setStatus('unconfigured')
       setMessage(
-        'This form is ready on the frontend, but no submission endpoint is configured yet. Email us directly or set CONTACT_FORM_ENDPOINT in src/data/content.ts.',
+        'This form is ready on the frontend, but no submission endpoint is configured yet. Email or call us directly, or set CONTACT_FORM_ENDPOINT in src/data/content.ts.',
       )
       return
     }
@@ -120,7 +86,7 @@ export function Contact() {
     } catch {
       setStatus('error')
       setMessage(
-        'Something went wrong while sending your message. Please try again or email us directly.',
+        'Something went wrong while sending your message. Please try again or contact us directly.',
       )
     }
   }
@@ -135,59 +101,184 @@ export function Contact() {
               Tell us what you&apos;re <span className="text-orange">imagining</span>
             </>
           }
-          lead="Fill out the form — we'll help map the next practical step."
+          lead="Reach the Nexvanta team in London — or send a message and we'll help map the next step."
+          align="split"
         />
 
-        <div className="nx-panel grid overflow-hidden lg:grid-cols-[1.05fr_0.95fr]">
-          <Reveal mode="left" className="p-6 md:p-8">
-            <form className="max-w-md space-y-4" onSubmit={onSubmit} noValidate>
-              <Field id="name" label="Name" error={errors.name}>
-                <input
-                  id="name"
-                  name="name"
-                  autoComplete="name"
-                  placeholder="Your name"
-                  value={values.name}
-                  onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
-                  className="field-input"
-                  aria-invalid={Boolean(errors.name)}
-                />
-              </Field>
-              <Field id="email" label="Email" error={errors.email}>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  placeholder="Enter your email"
-                  value={values.email}
-                  onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
-                  className="field-input"
-                  aria-invalid={Boolean(errors.email)}
-                />
-              </Field>
-              <Field id="phone" label="Phone number">
-                <input
-                  id="phone"
-                  name="phone"
-                  autoComplete="tel"
-                  placeholder="Enter your phone number"
-                  value={values.phone}
-                  onChange={(e) => setValues((v) => ({ ...v, phone: e.target.value }))}
-                  className="field-input"
-                />
-              </Field>
-              <Field id="companyName" label="Company name">
-                <input
-                  id="companyName"
-                  name="companyName"
-                  autoComplete="organization"
-                  placeholder="Enter your company name"
-                  value={values.companyName}
-                  onChange={(e) => setValues((v) => ({ ...v, companyName: e.target.value }))}
-                  className="field-input"
-                />
-              </Field>
+        <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal mode="left">
+            <aside className="nx-panel h-full p-6 md:p-7">
+              <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
+                Get in touch
+              </p>
+              <h3 className="mt-2 font-[family-name:var(--font-display)] text-2xl font-extrabold text-[var(--brand-slate)]">
+                London studio
+              </h3>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">
+                Based in the United Kingdom and ready to collaborate with ambitious teams worldwide.
+              </p>
+
+              <ul className="mt-6 space-y-3">
+                <li>
+                  <div className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(0,72,88,0.08)] text-[var(--brand-teal)]">
+                      <MapPin className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        Location
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold text-[var(--brand-slate)]">
+                        {company.location}
+                      </p>
+                      <p className="text-sm text-[var(--text-secondary)]">{company.country}</p>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <a
+                    href={company.phoneHref}
+                    className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5 transition hover:border-[var(--brand-teal)]"
+                  >
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(248,88,16,0.1)] text-[var(--brand-orange)]">
+                      <Phone className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        Phone
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold text-[var(--brand-slate)]">
+                        {company.phone}
+                      </p>
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5 transition hover:border-[var(--brand-teal)]"
+                  >
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(0,72,88,0.08)] text-[var(--brand-teal)]">
+                      <Mail className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        Email
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold text-[var(--brand-slate)]">
+                        {company.email}
+                      </p>
+                    </div>
+                  </a>
+                </li>
+
+                <li>
+                  <div className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5">
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(248,88,16,0.1)] text-[var(--brand-orange)]">
+                      <Clock3 className="h-4 w-4" />
+                    </span>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        Hours
+                      </p>
+                      <p className="mt-0.5 text-sm font-semibold text-[var(--brand-slate)]">
+                        {company.hours}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <a
+                  href={company.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary w-full"
+                >
+                  <FaLinkedinIn className="h-4 w-4" />
+                  LinkedIn
+                </a>
+                <a
+                  href={company.facebook}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-secondary w-full"
+                >
+                  <FaFacebookF className="h-4 w-4" />
+                  Facebook
+                </a>
+              </div>
+            </aside>
+          </Reveal>
+
+          <Reveal mode="right" delay={0.06}>
+            <form
+              className="nx-panel h-full space-y-4 p-6 md:p-8"
+              onSubmit={onSubmit}
+              noValidate
+            >
+              <div>
+                <p className="text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal-soft)]">
+                  Fill out the form to contact us
+                </p>
+                <h3 className="mt-1 font-[family-name:var(--font-display)] text-2xl font-extrabold text-[var(--brand-slate)]">
+                  Send a message
+                </h3>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field id="name" label="Name" error={errors.name}>
+                  <input
+                    id="name"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Your name"
+                    value={values.name}
+                    onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
+                    className="field-input"
+                    aria-invalid={Boolean(errors.name)}
+                  />
+                </Field>
+                <Field id="email" label="Email" error={errors.email}>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="Enter your email"
+                    value={values.email}
+                    onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
+                    className="field-input"
+                    aria-invalid={Boolean(errors.email)}
+                  />
+                </Field>
+                <Field id="phone" label="Phone number">
+                  <input
+                    id="phone"
+                    name="phone"
+                    autoComplete="tel"
+                    placeholder="Enter your phone number"
+                    value={values.phone}
+                    onChange={(e) => setValues((v) => ({ ...v, phone: e.target.value }))}
+                    className="field-input"
+                  />
+                </Field>
+                <Field id="companyName" label="Company name">
+                  <input
+                    id="companyName"
+                    name="companyName"
+                    autoComplete="organization"
+                    placeholder="Enter your company name"
+                    value={values.companyName}
+                    onChange={(e) => setValues((v) => ({ ...v, companyName: e.target.value }))}
+                    className="field-input"
+                  />
+                </Field>
+              </div>
+
               <Field id="details" label="Message" error={errors.details}>
                 <textarea
                   id="details"
@@ -201,7 +292,7 @@ export function Contact() {
                 />
               </Field>
 
-              <button type="submit" className="btn-primary mt-1" disabled={status === 'loading'}>
+              <button type="submit" className="btn-primary" disabled={status === 'loading'}>
                 {status === 'loading' ? 'Sending…' : 'Submit'}
                 <ArrowRight className="h-4 w-4" />
               </button>
@@ -221,28 +312,6 @@ export function Contact() {
                 </p>
               )}
             </form>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={`mailto:${company.email}`}
-                className="nx-chip !normal-case tracking-normal"
-              >
-                <Mail className="h-3.5 w-3.5 text-[var(--brand-teal)]" />
-                {company.email}
-              </a>
-              <a href={company.linkedin} target="_blank" rel="noreferrer" className="btn-secondary !px-3 !py-1.5 text-xs">
-                <FaLinkedinIn className="h-3.5 w-3.5" />
-                LinkedIn
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal
-            mode="right"
-            delay={0.06}
-            className="flex items-center justify-center bg-[var(--background-tint)] p-6 md:p-8"
-          >
-            <ContactSchematic />
           </Reveal>
         </div>
       </div>
