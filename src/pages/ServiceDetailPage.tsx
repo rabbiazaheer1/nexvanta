@@ -201,7 +201,7 @@ function OfferingsLayout({ service }: { service: Service }) {
           {service.offerings.map((item, i) => (
             <StaggerItem key={item.title}>
               <article
-                className={`relative overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-white p-6 shadow-[var(--shadow-card)] md:p-7 ${
+                className={`relative overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-6 shadow-[var(--shadow-card)] md:p-7 ${
                   i % 2 === 1 ? 'md:translate-y-8' : ''
                 }`}
               >
@@ -226,7 +226,7 @@ function OfferingsLayout({ service }: { service: Service }) {
       <Stagger className="mt-10 space-y-4" stagger={0.1}>
         {service.offerings.map((item, i) => (
           <StaggerItem key={item.title}>
-            <article className="group grid overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-white shadow-[var(--shadow-card)] md:grid-cols-[140px_1fr]">
+            <article className="group grid overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-[var(--background-elevated)] shadow-[var(--shadow-card)] md:grid-cols-[140px_1fr]">
               <div className="flex items-center justify-center bg-[var(--gradient-brand)] p-6 text-white md:min-h-[160px]">
                 <span className="font-[family-name:var(--font-display)] text-5xl font-extrabold opacity-90">
                   0{i + 1}
@@ -270,7 +270,7 @@ function OfferingsLayout({ service }: { service: Service }) {
           {service.offerings.map((item, i) => (
             <StaggerItem key={item.title}>
               <article
-                className={`rounded-[24px] border border-[var(--border-color)] bg-white p-5 shadow-[var(--shadow-card)] md:p-6 ${
+                className={`rounded-[24px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-5 shadow-[var(--shadow-card)] md:p-6 ${
                   i % 2 === 0 ? 'lg:ml-0' : 'lg:ml-10'
                 }`}
               >
@@ -429,7 +429,7 @@ export function ServiceDetailPage() {
               <Reveal key={item.slug} mode="up" delay={i * 0.06}>
                 <Link
                   to={`/services/${item.slug}`}
-                  className="group relative block overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-white shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+                  className="group relative block overflow-hidden rounded-[28px] border border-[var(--border-color)] bg-[var(--background-elevated)] shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
                 >
                   <div className="relative h-36 overflow-hidden">
                     <img

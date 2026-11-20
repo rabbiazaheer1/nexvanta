@@ -6,6 +6,7 @@
 */
 
 :root {
+  /* Brand colors unchanged — surfaces muted for calmer viewing */
   --brand-teal: #004858;
   --brand-teal-mid: #005868;
   --brand-teal-soft: #0a6b7c;
@@ -17,29 +18,29 @@
   --brand-secondary: var(--brand-teal-mid);
   --brand-accent: var(--brand-orange);
 
-  --background-primary: #f8f6f2;
-  --background-secondary: #f0ebe4;
-  --background-elevated: #ffffff;
-  --background-tint: #e8f2f4;
+  --background-primary: #e9e5df;
+  --background-secondary: #dfd9d1;
+  --background-elevated: #f1eee9;
+  --background-tint: #d9e4e6;
   --background-deep: #004858;
 
   --text-primary: #183440;
-  --text-secondary: #4a6670;
-  --text-muted: #6b848e;
-  --text-on-dark: #f8f6f2;
-  --text-on-accent: #ffffff;
+  --text-secondary: #4f646c;
+  --text-muted: #6a7d85;
+  --text-on-dark: #e9e5df;
+  --text-on-accent: #f7f4ef;
 
-  --border-color: rgba(0, 72, 88, 0.1);
-  --border-strong: rgba(0, 72, 88, 0.18);
+  --border-color: rgba(0, 72, 88, 0.12);
+  --border-strong: rgba(0, 72, 88, 0.2);
 
-  --gradient-accent: linear-gradient(135deg, #f85810 0%, #ff6b2c 100%);
+  --gradient-accent: linear-gradient(135deg, #e04f10 0%, #f85810 100%);
   --gradient-brand: linear-gradient(145deg, #004858 0%, #0a6b7c 55%, #183440 100%);
-  --gradient-hero: linear-gradient(165deg, #f8f6f2 0%, #eef5f6 48%, #f8f6f2 100%);
+  --gradient-hero: linear-gradient(165deg, #e9e5df 0%, #dde7e9 48%, #e9e5df 100%);
   --gradient-media: linear-gradient(
     180deg,
-    rgba(24, 52, 64, 0.55) 0%,
-    rgba(0, 72, 88, 0.35) 45%,
-    rgba(24, 52, 64, 0.72) 100%
+    rgba(24, 52, 64, 0.62) 0%,
+    rgba(0, 72, 88, 0.42) 45%,
+    rgba(24, 52, 64, 0.78) 100%
   );
 
   --font-display: "Syne", "Outfit", system-ui, sans-serif;
@@ -51,10 +52,10 @@
   --radius-xl: 28px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 14px 36px rgba(24, 52, 64, 0.07);
-  --shadow-card: 0 12px 28px rgba(24, 52, 64, 0.06);
-  --shadow-orange: 0 12px 28px rgba(248, 88, 16, 0.28);
-  --shadow-teal: 0 14px 34px rgba(0, 72, 88, 0.2);
+  --shadow-soft: 0 12px 28px rgba(24, 52, 64, 0.06);
+  --shadow-card: 0 8px 20px rgba(24, 52, 64, 0.05);
+  --shadow-orange: 0 10px 22px rgba(248, 88, 16, 0.16);
+  --shadow-teal: 0 12px 28px rgba(0, 72, 88, 0.16);
 
   --container: 1180px;
 }
@@ -223,12 +224,14 @@ select {
   cursor: pointer;
   transition:
     transform 0.22s ease,
-    box-shadow 0.22s ease;
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 16px 34px rgba(248, 88, 16, 0.34);
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 12px 24px rgba(248, 88, 16, 0.2);
 }
 
 .btn-primary:disabled {
@@ -245,7 +248,7 @@ select {
   padding: 0.78rem 1.15rem;
   border-radius: var(--radius-pill);
   border: 1.5px solid var(--border-strong);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(243, 240, 235, 0.85);
   color: var(--brand-teal);
   font-weight: 600;
   font-size: 0.92rem;
@@ -259,7 +262,7 @@ select {
 .btn-secondary:hover {
   transform: translateY(-1px);
   border-color: var(--brand-teal);
-  background: #fff;
+  background: var(--background-elevated);
 }
 
 .section-pad {
@@ -340,7 +343,7 @@ section[id] {
   width: 100%;
   border-radius: 14px;
   border: 1px solid var(--border-color);
-  background: #fff;
+  background: var(--background-elevated);
   color: var(--text-primary);
   padding: 0.8rem 0.95rem;
   outline: none;
@@ -360,9 +363,9 @@ section[id] {
 }
 
 .nav-shell {
-  border: 1px solid rgba(0, 72, 88, 0.1);
-  background: rgba(248, 246, 242, 0.88);
-  box-shadow: 0 10px 28px rgba(24, 52, 64, 0.07);
+  border: 1px solid rgba(0, 72, 88, 0.12);
+  background: rgba(235, 231, 225, 0.92);
+  box-shadow: 0 8px 22px rgba(24, 52, 64, 0.06);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -391,7 +394,7 @@ section[id] {
 
 .nx-card {
   border: 1px solid var(--border-color);
-  background: #fff;
+  background: var(--background-elevated);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   transition:
@@ -419,10 +422,10 @@ section[id] {
   gap: 0.35rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-color);
-  background: #fff;
+  background: var(--background-elevated);
   padding: 0.35rem 0.75rem;
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--brand-slate);
-  box-shadow: 0 8px 18px rgba(24, 52, 64, 0.06);
+  box-shadow: 0 8px 18px rgba(24, 52, 64, 0.05);
 }

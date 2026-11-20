@@ -2,7 +2,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { navLinks } from '../data/content'
+import { company, navLinks } from '../data/content'
 import { Logo } from './Logo'
 
 function toHash(href: string) {
@@ -29,7 +29,18 @@ export function Navbar() {
         setActive('services')
         return
       }
-      const ids = ['home', 'services', 'about', 'why-nexvanta', 'blog', 'contact', 'technology']
+      const ids = [
+        'home',
+        'services',
+        'about',
+        'why-nexvanta',
+        'work',
+        'industries',
+        'blog',
+        'faq',
+        'contact',
+        'technology',
+      ]
       let current = '#home'
       for (const id of ids) {
         const el = document.getElementById(id)
@@ -134,7 +145,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: reduce ? 0 : 4, scale: 0.98 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute left-0 top-full mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-[var(--border-color)] bg-white/95 p-1.5 shadow-[0_18px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl"
+                        className="absolute left-0 top-full mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-[var(--border-color)] bg-[var(--background-elevated)]/95 p-1.5 shadow-[0_18px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl"
                       >
                         <Link
                           to={link.href}
@@ -185,14 +196,14 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/#contact" className="btn-primary !px-4 !py-2 text-[0.8rem]">
-            Get in Touch
-          </Link>
+          <a href={company.phoneHref} className="btn-primary !px-4 !py-2 text-[0.8rem]">
+            Book a Call
+          </a>
         </div>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-white/80 text-[var(--brand-teal)] lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--background-elevated)]/90 text-[var(--brand-teal)] lg:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -270,9 +281,13 @@ export function Navbar() {
                   </Link>
                 )
               })}
-              <Link to="/#contact" className="btn-primary mt-2 w-full text-sm" onClick={closeMobile}>
-                Get in Touch
-              </Link>
+              <a
+                href={company.phoneHref}
+                className="btn-primary mt-2 w-full text-sm"
+                onClick={closeMobile}
+              >
+                Book a Call
+              </a>
             </nav>
           </motion.div>
         )}

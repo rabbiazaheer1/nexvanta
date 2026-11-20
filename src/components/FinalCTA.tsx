@@ -22,7 +22,7 @@ export function FinalCTA() {
             transition={{ duration: reduce ? 0.01 : 1.1, ease: [0.22, 1, 0.36, 1] }}
           />
 
-          <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(248,246,242,0.92)_0%,rgba(248,246,242,0.78)_42%,rgba(0,72,88,0.28)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(233,229,223,0.94)_0%,rgba(233,229,223,0.82)_42%,rgba(0,72,88,0.32)_100%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_50%,rgba(248,88,16,0.12),transparent_40%)]" />
 
           <div className="relative z-[1] flex items-center px-5 py-8 sm:px-6 sm:py-9 md:px-9 md:py-10">

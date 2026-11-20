@@ -54,7 +54,7 @@ export function Blog() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.2)_0%,rgba(248,246,242,0.55)_60%,#fff_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.25)_0%,rgba(233,229,223,0.65)_60%,var(--background-elevated)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(248,88,16,0.1),transparent_45%)]" />
           </div>
 
@@ -62,7 +62,7 @@ export function Blog() {
             {posts.map((post, i) => (
               <Reveal key={post.title} mode="up" delay={i * 0.08}>
                 <motion.article
-                  className="flex h-full flex-col rounded-[20px] border border-[var(--border-color)] bg-white p-4 shadow-[0_10px_24px_rgba(24,52,64,0.06)] md:p-5"
+                  className="flex h-full flex-col rounded-[20px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-4 shadow-[0_10px_24px_rgba(24,52,64,0.06)] md:p-5"
                   whileHover={reduce ? undefined : { y: -4 }}
                   transition={{ type: 'spring', stiffness: 260, damping: 22 }}
                 >

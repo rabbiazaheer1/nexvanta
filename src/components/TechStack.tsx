@@ -59,7 +59,7 @@ export function TechStack() {
           <div className="relative grid items-center gap-4 p-4 sm:gap-5 sm:p-5 md:grid-cols-[1fr_1fr] md:p-6">
             <div className="pointer-events-none absolute inset-0 opacity-25">
               <img src={techBg} alt="" className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#f8f6f2_20%,rgba(248,246,242,0.92)_70%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--background-primary)_20%,rgba(233,229,223,0.94)_70%)]" />
             </div>
 
             <Reveal mode="scale" className="relative mx-auto h-[240px] w-full max-w-[300px] sm:h-[280px] sm:max-w-[320px]">
@@ -88,10 +88,10 @@ export function TechStack() {
                     animate={reduce ? undefined : { y: [0, -4, 0] }}
                     transition={{ duration: 2.8 + (i % 3) * 0.3, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-white shadow-md">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--background-elevated)] shadow-md">
                       {Icon && <Icon className="h-4 w-4 text-[var(--brand-teal)]" />}
                     </div>
-                    <span className="rounded-full bg-white px-1.5 py-0.5 text-[0.55rem] font-bold text-[var(--brand-slate)] shadow-sm">
+                    <span className="rounded-full bg-[var(--background-elevated)] px-1.5 py-0.5 text-[0.55rem] font-bold text-[var(--brand-slate)] shadow-sm">
                       {tech.name}
                     </span>
                   </motion.div>
@@ -106,7 +106,7 @@ export function TechStack() {
                   return (
                     <div
                       key={tech.name}
-                      className="group flex items-center gap-2 rounded-[16px] border border-[var(--border-color)] bg-white px-3 py-3 transition hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(24,52,64,0.08)]"
+                      className="group flex items-center gap-2 rounded-[16px] border border-[var(--border-color)] bg-[var(--background-elevated)] px-3 py-3 transition hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(24,52,64,0.08)]"
                     >
                       {Icon && (
                         <Icon className="h-4 w-4 shrink-0 text-[var(--brand-teal)] group-hover:text-[var(--brand-orange)]" />

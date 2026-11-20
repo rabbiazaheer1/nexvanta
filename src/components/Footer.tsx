@@ -13,8 +13,8 @@ export function Footer() {
 
       <div className="container-nx grid gap-7 py-8 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1.1fr] lg:gap-8 lg:py-9">
         <div>
-          <div className="inline-flex rounded-xl bg-[var(--background-primary)] px-2 py-1.5">
-            <Logo />
+          <div className="inline-flex">
+            <Logo className="brightness-0 invert" />
           </div>
           <p className="mt-4 font-[family-name:var(--font-display)] text-sm font-bold text-[#ffb08a]">
             {company.tagline}

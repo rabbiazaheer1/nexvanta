@@ -29,7 +29,7 @@ export function WhyChoose() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,246,242,0.2)_0%,rgba(248,246,242,0.72)_70%,#fff_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,229,223,0.25)_0%,rgba(233,229,223,0.78)_70%,var(--background-elevated)_100%)]" />
 
             <div className="relative z-[1] flex h-full flex-wrap items-end gap-2 p-4 md:p-5">
               {['Tailored', 'Innovation', 'Scale', 'Partnership'].map((label, i) => (

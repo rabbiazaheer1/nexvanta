@@ -34,7 +34,9 @@ export const navLinks = [
     ],
   },
   { label: 'About', href: '/#about' },
+  { label: 'Work', href: '/#work' },
   { label: 'Blog', href: '/#blog' },
+  { label: 'FAQ', href: '/#faq' },
   { label: 'Contact', href: '/#contact' },
 ] as const
 
@@ -302,30 +304,83 @@ export const processSteps = [
   },
 ] as const
 
-export const portfolioProjects = [
+export const caseStudies = [
   {
+    id: '01',
     title: 'Commerce Pulse',
     category: 'Web Application',
-    description:
-      'Illustrative placeholder for a conversion-focused commerce experience with realtime catalog sync.',
-    tags: ['React', 'Node.js', 'PostgreSQL'],
-    placeholder: true,
+    result: 'Faster checkout journeys and a cleaner product discovery flow.',
+    tags: ['React', 'Node.js', 'UX'],
   },
   {
+    id: '02',
     title: 'Aether Assist',
-    category: 'AI Solution',
-    description:
-      'Illustrative placeholder for an AI assistant concept that streamlines internal support workflows.',
-    tags: ['Python', 'AI APIs', 'TypeScript'],
-    placeholder: true,
+    category: 'AI & Automation',
+    result: 'Support teams answered more queries with less manual routing.',
+    tags: ['AI', 'Python', 'Workflows'],
   },
   {
+    id: '03',
     title: 'Waypoint Mobile',
-    category: 'Mobile Application',
-    description:
-      'Illustrative placeholder for a cross-platform customer engagement app with polished UX.',
-    tags: ['Flutter', 'Firebase', 'UI/UX'],
-    placeholder: true,
+    category: 'Mobile App',
+    result: 'A polished cross-platform experience that keeps customers engaged.',
+    tags: ['Flutter', 'UI/UX', 'API'],
+  },
+] as const
+
+/** Legacy shape kept for unused Portfolio component compatibility */
+export const portfolioProjects = caseStudies.map((item) => ({
+  title: item.title,
+  category: item.category,
+  description: item.result,
+  tags: [...item.tags],
+  placeholder: true,
+}))
+
+export const industries = [
+  {
+    title: 'Startups & Founders',
+    detail: 'Ship MVPs and brand-ready products without overbuilding.',
+  },
+  {
+    title: 'Growing SMEs',
+    detail: 'Modernise websites, apps, and operations with practical AI.',
+  },
+  {
+    title: 'E-commerce Brands',
+    detail: 'Stronger storefronts, smoother journeys, clearer growth loops.',
+  },
+  {
+    title: 'Service Businesses',
+    detail: 'Digital presence, booking flows, and marketing that compounds.',
+  },
+] as const
+
+export const faqs = [
+  {
+    question: 'How do projects usually start?',
+    answer:
+      'We begin with a short discovery call to understand goals, constraints, and success metrics — then propose a clear scope and next step.',
+  },
+  {
+    question: 'How long does a typical engagement take?',
+    answer:
+      'Timelines depend on scope. Compact website builds can move quickly; custom apps and AI work usually follow a phased plan with visible milestones.',
+  },
+  {
+    question: 'Do you work with teams outside the UK?',
+    answer:
+      'Yes. We are based in London and collaborate with clients internationally through clear communication and structured delivery.',
+  },
+  {
+    question: 'Can you support after launch?',
+    answer:
+      'Absolutely. We can help with iteration, optimisation, content systems, and ongoing improvements once the product is live.',
+  },
+  {
+    question: 'What if we are not sure which service we need?',
+    answer:
+      'That is common. Share the outcome you want — growth, automation, a better product experience — and we will recommend the right starting path.',
   },
 ] as const
 

@@ -33,7 +33,7 @@ export function Services() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.15)_0%,rgba(248,246,242,0.55)_55%,#fff_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.2)_0%,rgba(233,229,223,0.65)_55%,var(--background-elevated)_100%)]" />
             <p className="absolute bottom-3 left-4 font-[family-name:var(--font-display)] text-xl font-extrabold text-[var(--brand-slate)] sm:left-5 sm:text-2xl md:bottom-4">
               Our Features
             </p>
@@ -47,7 +47,7 @@ export function Services() {
                   <Link to={`/services/${service.slug}`} className="block h-full">
                     <motion.article
                       id={`service-${service.id}`}
-                      className="group h-full rounded-[20px] border border-[var(--border-color)] bg-white p-4 shadow-[0_10px_24px_rgba(24,52,64,0.06)] transition md:p-5"
+                      className="group h-full rounded-[20px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-4 shadow-[0_10px_24px_rgba(24,52,64,0.06)] transition md:p-5"
                       whileHover={reduce ? undefined : { y: -4 }}
                     >
                       <div className="mb-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-color)] bg-[rgba(0,72,88,0.07)] text-[var(--brand-teal)]">
