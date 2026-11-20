@@ -23,6 +23,7 @@ export const company = {
 
 export const navLinks = [
   { label: 'Home', href: '/#home' },
+  { label: 'About', href: '/#about' },
   {
     label: 'Services',
     href: '/#services',
@@ -33,8 +34,12 @@ export const navLinks = [
       { label: 'Digital Marketing', href: '/services/digital-marketing' },
     ],
   },
-  { label: 'About', href: '/#about' },
+  { label: 'Why Us', href: '/#why-nexvanta' },
   { label: 'Work', href: '/#work' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Industries', href: '/#industries' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Technology', href: '/#technology' },
   { label: 'Blog', href: '/#blog' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'Contact', href: '/#contact' },

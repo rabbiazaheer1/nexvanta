@@ -31,16 +31,17 @@ export function Navbar() {
       }
       const ids = [
         'home',
-        'services',
         'about',
+        'services',
         'why-nexvanta',
         'work',
         'testimonials',
         'industries',
+        'process',
+        'technology',
         'blog',
         'faq',
         'contact',
-        'technology',
       ]
       let current = '#home'
       for (const id of ids) {
@@ -101,13 +102,13 @@ export function Navbar() {
       >
         <Logo />
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0 xl:flex" aria-label="Primary">
           {navLinks.map((link) => {
             if ('children' in link && link.children) {
               return (
                 <div key={link.label} className="relative" ref={dropdownRef}>
                   <div
-                    className={`relative inline-flex items-center rounded-full text-[0.82rem] font-semibold transition-colors ${
+                    className={`relative inline-flex items-center rounded-full text-[0.72rem] font-semibold transition-colors ${
                       isActive(link.href)
                         ? 'text-[var(--brand-teal)]'
                         : 'text-[var(--text-secondary)]'
@@ -115,14 +116,14 @@ export function Navbar() {
                   >
                     <Link
                       to={link.href}
-                      className="rounded-l-full px-3 py-1.5 hover:text-[var(--brand-teal)]"
+                      className="rounded-l-full px-1.5 py-1.5 hover:text-[var(--brand-teal)] 2xl:px-2"
                       onClick={() => setServicesOpen(false)}
                     >
                       {link.label}
                     </Link>
                     <button
                       type="button"
-                      className="rounded-r-full py-1.5 pr-2.5 pl-0.5 hover:text-[var(--brand-teal)]"
+                      className="rounded-r-full py-1.5 pr-1.5 pl-0 hover:text-[var(--brand-teal)]"
                       aria-label="Open services menu"
                       aria-expanded={servicesOpen}
                       aria-controls={servicesId}
@@ -133,7 +134,7 @@ export function Navbar() {
                     {isActive(link.href) && (
                       <motion.span
                         layoutId="nav-dot"
-                        className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
+                        className="absolute inset-x-1.5 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
                       />
                     )}
                   </div>
@@ -178,7 +179,7 @@ export function Navbar() {
               <Link
                 key={link.label}
                 to={link.href}
-                className={`relative rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors ${
+                className={`relative rounded-full px-1.5 py-1.5 text-[0.72rem] font-semibold transition-colors 2xl:px-2 ${
                   isActive(link.href)
                     ? 'text-[var(--brand-teal)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--brand-teal)]'
@@ -188,7 +189,7 @@ export function Navbar() {
                 {isActive(link.href) && (
                   <motion.span
                     layoutId="nav-dot"
-                    className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
+                    className="absolute inset-x-1.5 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
                   />
                 )}
               </Link>
@@ -196,15 +197,15 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:block">
-          <a href={company.phoneHref} className="btn-primary !px-4 !py-2 text-[0.8rem]">
+        <div className="hidden shrink-0 xl:block">
+          <a href={company.phoneHref} className="btn-primary !px-3 !py-2 text-[0.75rem]">
             Book a Call
           </a>
         </div>
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--background-elevated)]/90 text-[var(--brand-teal)] lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--background-elevated)]/90 text-[var(--brand-teal)] xl:hidden"
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -220,7 +221,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: reduce ? 0.01 : 0.22 }}
-            className="nav-shell container-nx mt-2 overflow-hidden rounded-[1.25rem] lg:hidden"
+            className="nav-shell container-nx mt-2 max-h-[min(70vh,520px)] overflow-y-auto rounded-[1.25rem] xl:hidden"
           >
             <nav className="flex flex-col gap-0.5 p-3" aria-label="Mobile">
               {navLinks.map((link) => {
