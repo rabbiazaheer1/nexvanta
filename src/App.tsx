@@ -1,14 +1,9 @@
-import { About } from './components/About'
-import { Blog } from './components/Blog'
-import { Contact } from './components/Contact'
-import { FinalCTA } from './components/FinalCTA'
+import { Route, Routes } from 'react-router-dom'
 import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
 import { Navbar } from './components/Navbar'
-import { Process } from './components/Process'
-import { Services } from './components/Services'
-import { TechStack } from './components/TechStack'
-import { WhyChoose } from './components/WhyChoose'
+import { ScrollManager } from './components/ScrollManager'
+import { HomePage } from './pages/HomePage'
+import { ServiceDetailPage } from './pages/ServiceDetailPage'
 
 export default function App() {
   return (
@@ -19,18 +14,12 @@ export default function App() {
       >
         Skip to content
       </a>
+      <ScrollManager />
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <WhyChoose />
-        <Process />
-        <TechStack />
-        <Blog />
-        <FinalCTA />
-        <Contact />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/services/:slug" element={<ServiceDetailPage />} />
+      </Routes>
       <Footer />
     </div>
   )

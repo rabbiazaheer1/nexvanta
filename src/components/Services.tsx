@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, BrainCircuit, Code2, Smartphone, TrendingUp } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import servicesCity from '../assets/sections/services-city.jpg'
 import { services } from '../data/content'
 import { Reveal } from './Reveal'
@@ -43,28 +44,27 @@ export function Services() {
                 const Icon = icons[index]
                 return (
                   <Reveal key={service.id} mode="up" delay={index * 0.05}>
-                    <motion.article
-                      id={`service-${service.id}`}
-                      className="group h-full rounded-[22px] border border-white/60 bg-white/85 p-4 shadow-[0_14px_34px_rgba(24,52,64,0.1)] backdrop-blur-xl md:p-5"
-                      whileHover={reduce ? undefined : { y: -4 }}
-                    >
-                      <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-color)] bg-[rgba(0,72,88,0.07)] text-[var(--brand-teal)]">
-                        <Icon className="h-5 w-5" strokeWidth={1.75} />
-                      </div>
-                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
-                        {service.id}
-                      </p>
-                      <h3 className="mt-1 font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--brand-slate)]">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-[var(--text-secondary)]">{service.tagline}</p>
-                      <a
-                        href="#contact"
-                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]"
+                    <Link to={`/services/${service.slug}`} className="block h-full">
+                      <motion.article
+                        id={`service-${service.id}`}
+                        className="group h-full rounded-[22px] border border-white/60 bg-white/85 p-4 shadow-[0_14px_34px_rgba(24,52,64,0.1)] backdrop-blur-xl transition md:p-5"
+                        whileHover={reduce ? undefined : { y: -4 }}
                       >
-                        Learn more <ArrowUpRight className="h-4 w-4" />
-                      </a>
-                    </motion.article>
+                        <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-color)] bg-[rgba(0,72,88,0.07)] text-[var(--brand-teal)]">
+                          <Icon className="h-5 w-5" strokeWidth={1.75} />
+                        </div>
+                        <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
+                          {service.id}
+                        </p>
+                        <h3 className="mt-1 font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--brand-slate)]">
+                          {service.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-[var(--text-secondary)]">{service.tagline}</p>
+                        <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]">
+                          Learn more <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        </span>
+                      </motion.article>
+                    </Link>
                   </Reveal>
                 )
               })}

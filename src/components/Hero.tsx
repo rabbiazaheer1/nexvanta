@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import heroRobot from '../assets/sections/hero-robot.jpg'
 
 export function Hero() {
@@ -23,25 +24,33 @@ export function Hero() {
           </motion.div>
 
           <h1 className="display-tight text-[clamp(2rem,4.4vw,3.2rem)] text-[var(--brand-slate)]">
-            {['Big Ideas.', 'Smarter Technology.', 'Better Tomorrow.'].map((line, i) => (
-              <span key={line} className="mask-line overflow-hidden">
+            {[
+              { key: 'ideas', node: <>Big Ideas,</> },
+              {
+                key: 'tech',
+                node: (
+                  <>
+                    <span className="text-teal">Intelligent</span> Technology.
+                  </>
+                ),
+              },
+              {
+                key: 'tomorrow',
+                node: (
+                  <>
+                    A Better <span className="text-orange">Tomorrow.</span>
+                  </>
+                ),
+              },
+            ].map((line, i) => (
+              <span key={line.key} className="mask-line overflow-hidden">
                 <motion.span
                   className="block"
                   initial={{ y: reduce ? 0 : '110%' }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.65, delay: 0.08 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  {i === 1 ? (
-                    <>
-                      <span className="text-teal">Smarter</span> Technology.
-                    </>
-                  ) : i === 2 ? (
-                    <>
-                      Better <span className="text-orange">Tomorrow.</span>
-                    </>
-                  ) : (
-                    line
-                  )}
+                  {line.node}
                 </motion.span>
               </span>
             ))}
@@ -63,13 +72,13 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <a href="#services" className="btn-primary">
+            <Link to="/#services" className="btn-primary">
               Explore Services
               <ArrowRight className="h-4 w-4" />
-            </a>
-            <a href="#contact" className="btn-secondary">
+            </Link>
+            <Link to="/#contact" className="btn-secondary">
               Let&apos;s Talk
-            </a>
+            </Link>
           </motion.div>
         </div>
 
@@ -99,15 +108,16 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <motion.a
-        href="#about"
+      <motion.div
         className="mx-auto mb-3 flex w-fit flex-col items-center gap-1 text-[0.68rem] font-bold uppercase tracking-[0.14em] text-[var(--text-muted)]"
         animate={reduce ? undefined : { y: [0, 4, 0] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
       >
-        Scroll
-        <ArrowDown className="h-3.5 w-3.5 text-[var(--brand-orange)]" />
-      </motion.a>
+        <Link to="/#about" className="flex flex-col items-center gap-1">
+          Scroll
+          <ArrowDown className="h-3.5 w-3.5 text-[var(--brand-orange)]" />
+        </Link>
+      </motion.div>
     </section>
   )
 }

@@ -1,8 +1,14 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import { useEffect, useId, useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { navLinks } from '../data/content'
 import { Logo } from './Logo'
+
+function toHash(href: string) {
+  if (!href.includes('#')) return href
+  return `#${href.split('#')[1]}`
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -13,10 +19,16 @@ export function Navbar() {
   const reduce = useReducedMotion()
   const servicesId = useId()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const location = useLocation()
+  const onServicePage = location.pathname.startsWith('/services/')
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 12)
+      if (onServicePage) {
+        setActive('services')
+        return
+      }
       const ids = ['home', 'services', 'about', 'why-nexvanta', 'blog', 'contact', 'technology']
       let current = '#home'
       for (const id of ids) {
@@ -28,7 +40,7 @@ export function Navbar() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [onServicePage])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -61,6 +73,13 @@ export function Navbar() {
     setMobileServicesOpen(false)
   }
 
+  const isActive = (href: string) => {
+    if (href === '/#services' || href.startsWith('/services/')) {
+      return active === '#services' || active === 'services'
+    }
+    return active === toHash(href)
+  }
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-4 md:pt-4">
       <div
@@ -78,7 +97,7 @@ export function Navbar() {
                   <button
                     type="button"
                     className={`relative inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors ${
-                      active === link.href
+                      isActive(link.href)
                         ? 'text-[var(--brand-teal)]'
                         : 'text-[var(--text-secondary)] hover:text-[var(--brand-teal)]'
                     }`}
@@ -88,7 +107,7 @@ export function Navbar() {
                   >
                     {link.label}
                     <ChevronDown className={`h-3.5 w-3.5 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                    {active === link.href && (
+                    {isActive(link.href) && (
                       <motion.span
                         layoutId="nav-dot"
                         className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
@@ -104,18 +123,18 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: reduce ? 0 : 4, scale: 0.98 }}
                         transition={{ duration: 0.18 }}
-                        className="absolute left-0 top-full mt-2 min-w-[210px] overflow-hidden rounded-2xl border border-[var(--border-color)] bg-white/95 p-1.5 shadow-[0_18px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl"
+                        className="absolute left-0 top-full mt-2 min-w-[220px] overflow-hidden rounded-2xl border border-[var(--border-color)] bg-white/95 p-1.5 shadow-[0_18px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl"
                       >
                         {link.children.map((child) => (
-                          <a
+                          <Link
                             key={child.label}
-                            href={child.href}
+                            to={child.href}
                             role="menuitem"
                             className="block rounded-xl px-3 py-2 text-sm font-medium text-[var(--text-secondary)] hover:bg-[rgba(0,72,88,0.06)] hover:text-[var(--brand-teal)]"
                             onClick={() => setServicesOpen(false)}
                           >
                             {child.label}
-                          </a>
+                          </Link>
                         ))}
                       </motion.div>
                     )}
@@ -125,31 +144,31 @@ export function Navbar() {
             }
 
             return (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className={`relative rounded-full px-3 py-1.5 text-[0.82rem] font-semibold transition-colors ${
-                  active === link.href
+                  isActive(link.href)
                     ? 'text-[var(--brand-teal)]'
                     : 'text-[var(--text-secondary)] hover:text-[var(--brand-teal)]'
                 }`}
               >
                 {link.label}
-                {active === link.href && (
+                {isActive(link.href) && (
                   <motion.span
                     layoutId="nav-dot"
                     className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-[var(--brand-orange)]"
                   />
                 )}
-              </a>
+              </Link>
             )
           })}
         </nav>
 
         <div className="hidden lg:block">
-          <a href="#contact" className="btn-primary !px-4 !py-2 text-[0.8rem]">
+          <Link to="/#contact" className="btn-primary !px-4 !py-2 text-[0.8rem]">
             Start Free Trial
-          </a>
+          </Link>
         </div>
 
         <button
@@ -197,14 +216,14 @@ export function Navbar() {
                             className="overflow-hidden pl-2"
                           >
                             {link.children.map((child) => (
-                              <a
+                              <Link
                                 key={child.label}
-                                href={child.href}
+                                to={child.href}
                                 className="block rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)]"
                                 onClick={closeMobile}
                               >
                                 {child.label}
-                              </a>
+                              </Link>
                             ))}
                           </motion.div>
                         )}
@@ -213,19 +232,19 @@ export function Navbar() {
                   )
                 }
                 return (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--brand-teal)]"
                     onClick={closeMobile}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 )
               })}
-              <a href="#contact" className="btn-primary mt-2 w-full text-sm" onClick={closeMobile}>
+              <Link to="/#contact" className="btn-primary mt-2 w-full text-sm" onClick={closeMobile}>
                 Start Free Trial
-              </a>
+              </Link>
             </nav>
           </motion.div>
         )}

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logoAsset from '../assets/nexvanta-logo.png'
 
 type LogoProps = {
@@ -7,11 +8,7 @@ type LogoProps = {
 
 export function Logo({ className = '', markOnly = false }: LogoProps) {
   return (
-    <a
-      href="#home"
-      className={`inline-flex items-center ${className}`}
-      aria-label="Nexvanta home"
-    >
+    <Link to="/#home" className={`inline-flex items-center ${className}`} aria-label="Nexvanta home">
       <img
         src={logoAsset}
         alt="Nexvanta"
@@ -24,6 +21,6 @@ export function Logo({ className = '', markOnly = false }: LogoProps) {
         }
         decoding="async"
       />
-    </a>
+    </Link>
   )
 }

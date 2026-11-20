@@ -1,5 +1,6 @@
 import { Clock3, Mail, MapPin, Phone } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 import { company, navLinks, services } from '../data/content'
 import { Logo } from './Logo'
 
@@ -46,9 +47,9 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a href={link.href} className="text-sm text-white/70 transition hover:text-[var(--brand-orange)]">
+                <Link to={link.href} className="text-sm text-white/70 transition hover:text-[var(--brand-orange)]">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -59,12 +60,12 @@ export function Footer() {
           <ul className="mt-3 space-y-2">
             {services.map((service) => (
               <li key={service.id}>
-                <a
-                  href={`#service-${service.id}`}
+                <Link
+                  to={`/services/${service.slug}`}
                   className="text-sm text-white/70 transition hover:text-[var(--brand-orange)]"
                 >
                   {service.title}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

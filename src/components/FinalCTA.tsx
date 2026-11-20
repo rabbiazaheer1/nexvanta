@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import ctaBg from '../assets/sections/cta-bg.png'
 import { Reveal } from './Reveal'
 
@@ -35,10 +36,10 @@ export function FinalCTA() {
               <p className="mt-3 max-w-md text-[var(--text-secondary)]">
                 Let&apos;s build something meaningful together.
               </p>
-              <a href="#contact" className="btn-primary mt-6">
+              <Link to="/#contact" className="btn-primary mt-6">
                 Start a Conversation
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </Reveal>
           </div>
         </div>
