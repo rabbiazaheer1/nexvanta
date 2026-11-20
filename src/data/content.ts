@@ -4,6 +4,9 @@ export const company = {
   email: 'info@nexvanta.uk',
   phone: '+44 7343 064274',
   phoneHref: 'tel:+447343064274',
+  /** Digits only — used for WhatsApp deep links */
+  whatsappNumber: '447343064274',
+  whatsappHref: 'https://wa.me/447343064274',
   location: 'London, United Kingdom',
   country: 'United Kingdom',
   hours: 'Always open',
@@ -347,8 +350,7 @@ export const serviceOptions = [
 ] as const
 
 /**
- * Contact form endpoint.
- * Leave empty until a backend or form service (Formspree, Getform, custom API) is configured.
- * Example: 'https://formspree.io/f/xxxxxxx'
+ * Sends submissions to info@nexvanta.uk via FormSubmit.
+ * First submission triggers a one-time activation email to that inbox — confirm it once.
  */
-export const CONTACT_FORM_ENDPOINT = ''
+export const CONTACT_FORM_ENDPOINT = `https://formsubmit.co/ajax/${company.email}`

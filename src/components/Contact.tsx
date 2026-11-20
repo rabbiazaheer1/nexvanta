@@ -1,7 +1,7 @@
-import { ArrowRight, Clock3, Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, Clock3, Mail, MapPin } from 'lucide-react'
 import { useState, type FormEvent, type ReactNode } from 'react'
-import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
-import { company, CONTACT_FORM_ENDPOINT, serviceOptions } from '../data/content'
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
+import { company, CONTACT_FORM_ENDPOINT } from '../data/content'
 import { Reveal } from './Reveal'
 import { SectionHeader } from './SectionHeader'
 
@@ -40,9 +40,7 @@ function validate(values: FormState): FieldErrors {
 export function Contact() {
   const [values, setValues] = useState<FormState>(initial)
   const [errors, setErrors] = useState<FieldErrors>({})
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'unconfigured'>(
-    'idle',
-  )
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
 
   const onSubmit = async (e: FormEvent) => {
@@ -52,14 +50,6 @@ export function Contact() {
     if (Object.keys(nextErrors).length > 0) {
       setStatus('idle')
       setMessage('')
-      return
-    }
-
-    if (!CONTACT_FORM_ENDPOINT) {
-      setStatus('unconfigured')
-      setMessage(
-        'This form is ready on the frontend, but no submission endpoint is configured yet. Email or call us directly, or set CONTACT_FORM_ENDPOINT in src/data/content.ts.',
-      )
       return
     }
 
@@ -73,20 +63,28 @@ export function Contact() {
         body: JSON.stringify({
           name: values.name,
           email: values.email,
-          phone: values.phone,
-          company: values.companyName,
-          details: values.details,
-          service: serviceOptions[0],
+          phone: values.phone || 'Not provided',
+          company: values.companyName || 'Not provided',
+          message: values.details,
+          _replyto: values.email,
+          _subject: `Nexvanta inquiry from ${values.name}`,
+          _template: 'table',
+          _captcha: 'false',
         }),
       })
-      if (!res.ok) throw new Error('Request failed')
+
+      const data = (await res.json().catch(() => null)) as { success?: string | boolean; message?: string } | null
+      if (!res.ok || data?.success === 'false' || data?.success === false) {
+        throw new Error(data?.message || 'Request failed')
+      }
+
       setStatus('success')
       setMessage('Message sent successfully. We will get back to you soon.')
       setValues(initial)
     } catch {
       setStatus('error')
       setMessage(
-        'Something went wrong while sending your message. Please try again or contact us directly.',
+        'Something went wrong while sending your message. Please try again, WhatsApp us, or email info@nexvanta.uk.',
       )
     }
   }
@@ -138,19 +136,22 @@ export function Contact() {
 
                 <li>
                   <a
-                    href={company.phoneHref}
+                    href={company.whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
                     className="flex items-start gap-3 rounded-2xl border border-[var(--border-color)] bg-[var(--background-primary)] p-3.5 transition hover:border-[var(--brand-teal)]"
                   >
-                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(248,88,16,0.1)] text-[var(--brand-orange)]">
-                      <Phone className="h-4 w-4" />
+                    <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgba(37,211,102,0.14)] text-[#128C7E]">
+                      <FaWhatsapp className="h-5 w-5" />
                     </span>
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
-                        Phone
+                        WhatsApp
                       </p>
                       <p className="mt-0.5 text-sm font-semibold text-[var(--brand-slate)]">
                         {company.phone}
                       </p>
+                      <p className="text-xs text-[var(--text-secondary)]">Tap to chat on WhatsApp</p>
                     </div>
                   </a>
                 </li>
@@ -191,7 +192,17 @@ export function Contact() {
                 </li>
               </ul>
 
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              <a
+                href={`${company.whatsappHref}?text=${encodeURIComponent('Hi Nexvanta, I would like to discuss a project.')}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-primary mt-5 w-full !bg-[#25D366] hover:!bg-[#1ebe57]"
+              >
+                <FaWhatsapp className="h-4 w-4" />
+                Chat on WhatsApp
+              </a>
+
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
                 <a
                   href={company.linkedin}
                   target="_blank"
@@ -299,13 +310,7 @@ export function Contact() {
 
               {message && (
                 <p
-                  className={`text-sm ${
-                    status === 'success'
-                      ? 'text-emerald-700'
-                      : status === 'unconfigured'
-                        ? 'text-[var(--brand-teal)]'
-                        : 'text-rose-600'
-                  }`}
+                  className={`text-sm ${status === 'success' ? 'text-emerald-700' : 'text-rose-600'}`}
                   role="status"
                 >
                   {message}

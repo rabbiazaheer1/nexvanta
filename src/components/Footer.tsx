@@ -1,5 +1,5 @@
-import { Clock3, Mail, MapPin, Phone } from 'lucide-react'
-import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa6'
+import { Clock3, Mail, MapPin } from 'lucide-react'
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 import { company, navLinks, services } from '../data/content'
 import { Logo } from './Logo'
@@ -83,8 +83,13 @@ export function Footer() {
               </span>
             </li>
             <li>
-              <a href={company.phoneHref} className="inline-flex items-center gap-2.5 transition hover:text-[var(--brand-orange)]">
-                <Phone className="h-4 w-4 shrink-0 text-[#ffb08a]" />
+              <a
+                href={company.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 transition hover:text-[var(--brand-orange)]"
+              >
+                <FaWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" />
                 {company.phone}
               </a>
             </li>
