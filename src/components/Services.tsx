@@ -29,12 +29,12 @@ export function Services() {
             src={servicesCity}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
           />
-          <div className="nx-media-overlay" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,246,242,0.15)_0%,rgba(248,246,242,0.35)_45%,rgba(248,246,242,0.88)_100%)]" />
 
           <div className="relative z-[1] flex min-h-[480px] flex-col justify-end gap-5 p-5 md:min-h-[520px] md:p-7">
-            <p className="font-[family-name:var(--font-display)] text-2xl font-extrabold text-white md:text-3xl">
+            <p className="font-[family-name:var(--font-display)] text-2xl font-extrabold text-[var(--brand-slate)] md:text-3xl">
               Our Features
             </p>
 
@@ -45,22 +45,22 @@ export function Services() {
                   <Reveal key={service.id} mode="up" delay={index * 0.05}>
                     <motion.article
                       id={`service-${service.id}`}
-                      className="nx-glass group h-full p-4 text-white md:p-5"
+                      className="group h-full rounded-[22px] border border-white/60 bg-white/85 p-4 shadow-[0_14px_34px_rgba(24,52,64,0.1)] backdrop-blur-xl md:p-5"
                       whileHover={reduce ? undefined : { y: -4 }}
                     >
-                      <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/15">
+                      <div className="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--border-color)] bg-[rgba(0,72,88,0.07)] text-[var(--brand-teal)]">
                         <Icon className="h-5 w-5" strokeWidth={1.75} />
                       </div>
-                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#ffb08a]">
+                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
                         {service.id}
                       </p>
-                      <h3 className="mt-1 font-[family-name:var(--font-display)] text-lg font-extrabold">
+                      <h3 className="mt-1 font-[family-name:var(--font-display)] text-lg font-extrabold text-[var(--brand-slate)]">
                         {service.title}
                       </h3>
-                      <p className="mt-2 text-sm text-white/80">{service.tagline}</p>
+                      <p className="mt-2 text-sm text-[var(--text-secondary)]">{service.tagline}</p>
                       <a
                         href="#contact"
-                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-white"
+                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]"
                       >
                         Learn more <ArrowUpRight className="h-4 w-4" />
                       </a>

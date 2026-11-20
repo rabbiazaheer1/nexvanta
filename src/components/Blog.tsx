@@ -6,25 +6,30 @@ import { SectionHeader } from './SectionHeader'
 
 const posts = [
   {
-    title: 'Designing AI features that teams actually adopt',
-    excerpt: 'Practical notes on embedding automation without overwhelming users.',
-    tag: 'AI',
+    tag: 'AI & Technology',
+    readTime: '5 min read',
+    title: 'When intelligence feels invisible',
+    excerpt:
+      'The best AI does not announce itself. It quietly removes friction from everyday work — answering, routing, and deciding so teams can focus on judgment, creativity, and growth.',
   },
   {
-    title: 'From brief to build: keeping product scope honest',
-    excerpt: 'How collaborative discovery protects timelines and craft.',
-    tag: 'Process',
+    tag: 'Web Development',
+    readTime: '6 min read',
+    title: 'Websites that behave like products',
+    excerpt:
+      'A modern website is no longer a brochure. It is a living system — fast, accessible, and designed around real journeys that turn attention into trust and trust into action.',
   },
   {
-    title: 'Mobile experiences that feel native across platforms',
-    excerpt: 'Patterns for cross-platform apps with platform respect.',
-    tag: 'Mobile',
+    tag: 'Mobile & Growth',
+    readTime: '4 min read',
+    title: 'Experiences that travel with your customers',
+    excerpt:
+      'Great mobile apps feel effortless in the hand. Paired with thoughtful digital marketing, they create a rhythm of discovery, engagement, and loyalty that compounds over time.',
   },
 ] as const
 
 export function Blog() {
   const reduce = useReducedMotion()
-  const [featured, ...rest] = posts
 
   return (
     <section id="blog" className="section-pad relative overflow-hidden bg-[var(--background-secondary)]">
@@ -36,67 +41,54 @@ export function Blog() {
               Fresh ideas for a <span className="text-orange">changing world</span>
             </>
           }
-          lead="Editorial placeholders — replace with published posts when ready."
+          lead="Original studio notes from the Nexvanta team — written to spark clearer product thinking."
           align="split"
         />
 
-        <div className="nx-panel overflow-hidden">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-            {/* Left: properly aligned blog content */}
-            <div className="flex flex-col gap-4 border-b border-[var(--border-color)] p-5 md:p-7 lg:border-b-0 lg:border-r">
-              <Reveal mode="left">
-                <article className="nx-card !shadow-none group overflow-hidden !p-0">
-                  <div className="relative aspect-[16/8] overflow-hidden bg-[linear-gradient(145deg,#004858,#183440)] sm:aspect-[16/7]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(248,88,16,0.28),transparent_55%)]" />
-                    <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-white/15 px-2.5 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-white backdrop-blur">
-                      {featured.tag} · Coming soon
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug text-[var(--brand-slate)]">
-                      {featured.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-[var(--text-secondary)]">{featured.excerpt}</p>
-                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]">
-                      Read article <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </article>
-              </Reveal>
+        <div className="nx-media relative min-h-[480px] overflow-hidden md:min-h-[520px]">
+          <img
+            src={blogArt}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(248,246,242,0.55)_0%,rgba(248,246,242,0.35)_35%,rgba(24,52,64,0.45)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(248,88,16,0.08),transparent_45%)]" />
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                {rest.map((post, i) => (
-                  <Reveal key={post.title} mode="up" delay={0.06 + i * 0.05}>
-                    <article className="nx-card flex h-full flex-col justify-between p-4 md:p-5">
-                      <div>
-                        <span className="rounded-full bg-[rgba(248,88,16,0.1)] px-2 py-0.5 text-[0.62rem] font-bold uppercase tracking-wider text-[var(--brand-orange)]">
-                          {post.tag}
-                        </span>
-                        <h3 className="mt-3 font-[family-name:var(--font-display)] text-base font-bold leading-snug text-[var(--brand-slate)]">
-                          {post.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-[var(--text-secondary)]">{post.excerpt}</p>
-                      </div>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]">
-                        Coming soon <ArrowRight className="h-4 w-4" />
+          <div className="relative z-[1] flex min-h-[480px] flex-col justify-end p-5 md:min-h-[520px] md:p-7">
+            <div className="grid gap-4 md:grid-cols-3">
+              {posts.map((post, i) => (
+                <Reveal key={post.title} mode="up" delay={i * 0.08}>
+                  <motion.article
+                    className="flex h-full flex-col rounded-[22px] border border-white/45 bg-white/80 p-5 shadow-[0_16px_40px_rgba(24,52,64,0.12)] backdrop-blur-xl md:p-6"
+                    whileHover={reduce ? undefined : { y: -6 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+                  >
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-[rgba(248,88,16,0.12)] px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider text-[var(--brand-orange)]">
+                        {post.tag}
                       </span>
-                    </article>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
+                      <span className="text-[0.68rem] font-semibold text-[var(--text-muted)]">
+                        {post.readTime}
+                      </span>
+                    </div>
 
-            {/* Right: new sculpture image, aligned and animated lightly */}
-            <Reveal mode="right" delay={0.08} className="relative min-h-[280px] bg-[#eef1f4] lg:min-h-full">
-              <motion.img
-                src={blogArt}
-                alt="Abstract glass sculpture artwork"
-                className="absolute inset-0 h-full w-full object-contain object-center p-4 md:p-6"
-                animate={reduce ? undefined : { y: [0, -8, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#eef1f4] to-transparent" />
-            </Reveal>
+                    <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.15rem] font-extrabold leading-snug tracking-tight text-[var(--brand-slate)] md:text-[1.25rem]">
+                      {post.title}
+                    </h3>
+
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--text-secondary)]">
+                      {post.excerpt}
+                    </p>
+
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--brand-teal)]">
+                      Read note
+                      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                    </span>
+                  </motion.article>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
