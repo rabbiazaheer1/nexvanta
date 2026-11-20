@@ -9,6 +9,7 @@ import { Industries } from '../components/Industries'
 import { Process } from '../components/Process'
 import { Services } from '../components/Services'
 import { TechStack } from '../components/TechStack'
+import { Testimonials } from '../components/Testimonials'
 import { WhyChoose } from '../components/WhyChoose'
 
 export function HomePage() {
@@ -19,6 +20,7 @@ export function HomePage() {
       <Services />
       <WhyChoose />
       <CaseStudies />
+      <Testimonials />
       <Industries />
       <Process />
       <TechStack />

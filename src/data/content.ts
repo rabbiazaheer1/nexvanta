@@ -356,6 +356,27 @@ export const industries = [
   },
 ] as const
 
+export const testimonials = [
+  {
+    quote:
+      'Nexvanta helped us turn a rough product idea into a clear digital experience. Communication stayed sharp, and delivery felt calm and professional.',
+    name: 'Amina Rahman',
+    role: 'Founder, Studio North',
+  },
+  {
+    quote:
+      'They understood our goals quickly and built a website that finally matches how we want the brand to feel — modern, fast, and easy to manage.',
+    name: 'James Cole',
+    role: 'Marketing Lead, Brightline',
+  },
+  {
+    quote:
+      'From AI automation to polish on the frontend, the team focused on outcomes. We saw less manual work and a cleaner customer journey.',
+    name: 'Sara Khan',
+    role: 'Operations Director',
+  },
+] as const
+
 export const faqs = [
   {
     question: 'How do projects usually start?',

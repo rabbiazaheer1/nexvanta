@@ -35,6 +35,7 @@ export function Navbar() {
         'about',
         'why-nexvanta',
         'work',
+        'testimonials',
         'industries',
         'blog',
         'faq',
