@@ -37,16 +37,16 @@ export function Process() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,229,223,0.2)_0%,rgba(233,229,223,0.75)_65%,var(--background-elevated)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(209,217,216,0.25)_0%,rgba(209,217,216,0.8)_65%,var(--background-elevated)_100%)]" />
             <div className="relative z-[1] flex h-full items-end p-4 md:p-5">
               <div className="nx-chip !bg-[var(--background-elevated)]/95">
                 <span className="h-2 w-2 rounded-full bg-[var(--brand-teal)]" />
-                Nexvanta playground · step by step
+                Nexvanta workflow · step by step
               </div>
             </div>
           </div>
 
-          <div className="bg-[var(--background-elevated)] px-3.5 pb-4 pt-3 sm:px-4 md:px-5 md:pb-5">
+          <div className="bg-[var(--background-elevated)] px-4 pb-5 pt-3 sm:px-5 md:px-6 md:pb-6">
             <div className="relative mb-4 hidden h-1.5 overflow-hidden rounded-full bg-[rgba(0,72,88,0.1)] lg:block">
               <motion.div
                 className="absolute inset-y-0 left-0 rounded-full bg-[linear-gradient(90deg,#004858,#f85810)]"
@@ -54,16 +54,16 @@ export function Process() {
               />
             </div>
 
-            <ol className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
               {processSteps.map((step, index) => (
                 <Reveal key={step.id} mode="up" delay={index * 0.05}>
                   <li>
-                    <article className="nx-card h-full p-4">
-                      <div className="mb-2 flex items-center gap-2">
-                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[rgba(248,88,16,0.12)] text-xs font-extrabold text-[var(--brand-orange)]">
+                    <article className="nx-card h-full bg-[var(--background-primary)] p-4">
+                      <div className="mb-2 flex items-center gap-2.5">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[var(--brand-teal)] text-xs font-extrabold text-white">
                           {step.id}
                         </span>
-                        <h3 className="font-[family-name:var(--font-display)] text-base font-bold text-[var(--brand-slate)]">
+                        <h3 className="text-base font-bold tracking-tight text-[var(--brand-slate)]">
                           {step.title}
                         </h3>
                       </div>

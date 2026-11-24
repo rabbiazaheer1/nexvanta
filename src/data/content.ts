@@ -34,6 +34,16 @@ export const navLinks = [
       { label: 'Digital Marketing', href: '/services/digital-marketing' },
     ],
   },
+  { label: 'Work', href: '/#work' },
+  { label: 'Process', href: '/#process' },
+  { label: 'Blog', href: '/#blog' },
+  { label: 'Contact', href: '/#contact' },
+] as const
+
+export const footerNavLinks = [
+  { label: 'Home', href: '/#home' },
+  { label: 'About', href: '/#about' },
+  { label: 'Services', href: '/#services' },
   { label: 'Why Us', href: '/#why-nexvanta' },
   { label: 'Work', href: '/#work' },
   { label: 'Testimonials', href: '/#testimonials' },

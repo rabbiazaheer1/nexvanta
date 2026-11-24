@@ -1,46 +1,45 @@
 @import "tailwindcss";
 
 /*
-  Nexvanta — unified creative system
-  Teal #004858 · Orange #F85810 · Ivory #F8F6F2
+  Nexvanta — unified creative system (Low-Glare Matte Light)
+  Deep Teal #004858 · Rich Teal #052E38 · Matte Orange #DF5216 · Soft Stone #E2E7E6
 */
 
 :root {
-  /* Brand colors unchanged — surfaces muted for calmer viewing */
   --brand-teal: #004858;
   --brand-teal-mid: #005868;
   --brand-teal-soft: #0a6b7c;
-  --brand-orange: #f85810;
-  --brand-orange-soft: #ff6b2c;
-  --brand-slate: #183440;
+  --brand-orange: #df5216;
+  --brand-orange-soft: #eb6a32;
+  --brand-slate: #142c35;
 
   --brand-primary: var(--brand-teal);
   --brand-secondary: var(--brand-teal-mid);
   --brand-accent: var(--brand-orange);
 
-  --background-primary: #e9e5df;
-  --background-secondary: #dfd9d1;
-  --background-elevated: #f1eee9;
-  --background-tint: #d9e4e6;
-  --background-deep: #004858;
+  --background-primary: #d1d9d8;
+  --background-secondary: #c4cecd;
+  --background-elevated: #e1e7e6;
+  --background-tint: #b8c7c7;
+  --background-deep: #052e38;
 
-  --text-primary: #183440;
-  --text-secondary: #4f646c;
-  --text-muted: #6a7d85;
-  --text-on-dark: #e9e5df;
-  --text-on-accent: #f7f4ef;
+  --text-primary: #10262e;
+  --text-secondary: #374e57;
+  --text-muted: #50666f;
+  --text-on-dark: #e6eceb;
+  --text-on-accent: #f3f5f4;
 
-  --border-color: rgba(0, 72, 88, 0.12);
-  --border-strong: rgba(0, 72, 88, 0.2);
+  --border-color: rgba(0, 72, 88, 0.14);
+  --border-strong: rgba(0, 72, 88, 0.26);
 
-  --gradient-accent: linear-gradient(135deg, #e04f10 0%, #f85810 100%);
-  --gradient-brand: linear-gradient(145deg, #004858 0%, #0a6b7c 55%, #183440 100%);
-  --gradient-hero: linear-gradient(165deg, #e9e5df 0%, #dde7e9 48%, #e9e5df 100%);
+  --gradient-accent: linear-gradient(135deg, #c94612 0%, #d85118 100%);
+  --gradient-brand: linear-gradient(145deg, #052e38 0%, #004858 55%, #0a6b7c 100%);
+  --gradient-hero: linear-gradient(165deg, #cbd5d4 0%, #becbcc 50%, #d1d9d8 100%);
   --gradient-media: linear-gradient(
     180deg,
-    rgba(24, 52, 64, 0.62) 0%,
-    rgba(0, 72, 88, 0.42) 45%,
-    rgba(24, 52, 64, 0.78) 100%
+    rgba(5, 46, 56, 0.68) 0%,
+    rgba(0, 72, 88, 0.48) 45%,
+    rgba(5, 46, 56, 0.84) 100%
   );
 
   --font-display: "Syne", "Outfit", system-ui, sans-serif;
@@ -52,10 +51,10 @@
   --radius-xl: 28px;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 12px 28px rgba(24, 52, 64, 0.06);
-  --shadow-card: 0 8px 20px rgba(24, 52, 64, 0.05);
-  --shadow-orange: 0 10px 22px rgba(248, 88, 16, 0.16);
-  --shadow-teal: 0 12px 28px rgba(0, 72, 88, 0.16);
+  --shadow-soft: 0 12px 28px rgba(19, 42, 51, 0.07);
+  --shadow-card: 0 6px 18px rgba(19, 42, 51, 0.05);
+  --shadow-orange: 0 8px 20px rgba(223, 82, 22, 0.16);
+  --shadow-teal: 0 12px 26px rgba(0, 72, 88, 0.15);
 
   --container: 1180px;
 }
@@ -248,7 +247,7 @@ select {
   padding: 0.78rem 1.15rem;
   border-radius: var(--radius-pill);
   border: 1.5px solid var(--border-strong);
-  background: rgba(243, 240, 235, 0.85);
+  background: var(--background-elevated);
   color: var(--brand-teal);
   font-weight: 600;
   font-size: 0.92rem;
@@ -262,22 +261,22 @@ select {
 .btn-secondary:hover {
   transform: translateY(-1px);
   border-color: var(--brand-teal);
-  background: var(--background-elevated);
+  background: var(--background-secondary);
 }
 
 .section-pad {
-  padding-block: 2.15rem;
+  padding-block: 2.5rem;
 }
 
 @media (min-width: 768px) {
   .section-pad {
-    padding-block: 2.85rem;
+    padding-block: 3.25rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-pad {
-    padding-block: 3.25rem;
+    padding-block: 3.75rem;
   }
 }
 
@@ -298,8 +297,8 @@ section[id] {
   padding: 0.32rem 0.8rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--border-color);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--brand-teal-mid);
+  background: rgba(225, 231, 230, 0.9);
+  color: var(--brand-teal);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -363,9 +362,9 @@ section[id] {
 }
 
 .nav-shell {
-  border: 1px solid rgba(0, 72, 88, 0.12);
-  background: rgba(235, 231, 225, 0.92);
-  box-shadow: 0 8px 22px rgba(24, 52, 64, 0.06);
+  border: 1px solid rgba(0, 72, 88, 0.14);
+  background: rgba(225, 231, 230, 0.92);
+  box-shadow: 0 8px 22px rgba(19, 42, 51, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }

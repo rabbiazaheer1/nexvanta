@@ -33,13 +33,13 @@ export function Services() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-[center_40%]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.2)_0%,rgba(233,229,223,0.65)_55%,var(--background-elevated)_100%)]" />
-            <p className="absolute bottom-3 left-4 font-[family-name:var(--font-display)] text-xl font-extrabold text-[var(--brand-slate)] sm:left-5 sm:text-2xl md:bottom-4">
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,46,56,0.22)_0%,rgba(209,217,216,0.75)_60%,var(--background-elevated)_100%)]" />
+            <p className="absolute bottom-3 left-4 text-xl font-bold tracking-tight text-[var(--brand-slate)] sm:left-5 sm:text-2xl md:bottom-4">
               Our Features
             </p>
           </div>
 
-          <div className="grid gap-3 p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-4">
+          <div className="grid gap-3.5 p-4 sm:grid-cols-2 sm:p-5 lg:grid-cols-4">
             {services.map((service, index) => {
               const Icon = icons[index]
               return (
@@ -47,16 +47,16 @@ export function Services() {
                   <Link to={`/services/${service.slug}`} className="block h-full">
                     <motion.article
                       id={`service-${service.id}`}
-                      className="group h-full rounded-[20px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-4 shadow-[0_10px_24px_rgba(24,52,64,0.06)] transition md:p-5"
+                      className="group h-full rounded-[20px] border border-[var(--border-color)] bg-[var(--background-elevated)] p-4 shadow-[0_8px_22px_rgba(19,42,51,0.04)] transition hover:border-[var(--border-strong)] md:p-5"
                       whileHover={reduce ? undefined : { y: -4 }}
                     >
-                      <div className="mb-2.5 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border-color)] bg-[rgba(0,72,88,0.07)] text-[var(--brand-teal)]">
+                      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-color)] bg-[var(--background-secondary)] text-[var(--brand-teal)]">
                         <Icon className="h-5 w-5" strokeWidth={1.75} />
                       </div>
-                      <p className="text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-orange)]">
+                      <p className="text-[0.64rem] font-bold uppercase tracking-[0.14em] text-[var(--brand-teal-soft)]">
                         {service.id}
                       </p>
-                      <h3 className="mt-1 font-[family-name:var(--font-display)] text-base font-extrabold text-[var(--brand-slate)] sm:text-lg">
+                      <h3 className="mt-1 text-base font-bold tracking-tight text-[var(--brand-slate)] sm:text-lg">
                         {service.title}
                       </h3>
                       <p className="mt-1.5 text-sm text-[var(--text-secondary)]">{service.tagline}</p>

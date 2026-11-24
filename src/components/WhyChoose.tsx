@@ -29,17 +29,17 @@ export function WhyChoose() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(233,229,223,0.25)_0%,rgba(233,229,223,0.78)_70%,var(--background-elevated)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(209,217,216,0.25)_0%,rgba(209,217,216,0.84)_70%,var(--background-elevated)_100%)]" />
 
             <div className="relative z-[1] flex h-full flex-wrap items-end gap-2 p-4 md:p-5">
               {['Tailored', 'Innovation', 'Scale', 'Partnership'].map((label, i) => (
                 <motion.span
                   key={label}
                   className="nx-chip"
-                  animate={reduce ? undefined : { y: [0, i % 2 === 0 ? -5 : 5, 0] }}
+                  animate={reduce ? undefined : { y: [0, i % 2 === 0 ? -4 : 4, 0] }}
                   transition={{ duration: 3.4 + i * 0.2, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[var(--brand-orange)] text-[0.55rem] text-white">
+                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[var(--brand-teal)] text-[0.55rem] text-white">
                     +
                   </span>
                   {label}
@@ -48,14 +48,14 @@ export function WhyChoose() {
             </div>
           </div>
 
-          <Stagger className="grid gap-3 p-3.5 sm:grid-cols-2 sm:p-4 lg:grid-cols-4 md:p-5" stagger={0.07}>
+          <Stagger className="grid gap-3.5 p-4 sm:grid-cols-2 lg:grid-cols-4 md:p-5" stagger={0.07}>
             {whyChoose.map((item, index) => (
               <StaggerItem key={item.title} mode="up">
-                <article className="nx-card h-full p-3.5 sm:p-4">
-                  <span className="font-[family-name:var(--font-display)] text-2xl font-extrabold text-[rgba(0,72,88,0.12)]">
+                <article className="nx-card h-full p-4">
+                  <span className="text-xl font-extrabold text-[rgba(0,72,88,0.18)]">
                     0{index + 1}
                   </span>
-                  <h3 className="mt-1 font-[family-name:var(--font-display)] text-base font-bold text-[var(--brand-slate)]">
+                  <h3 className="mt-1 text-base font-bold tracking-tight text-[var(--brand-slate)]">
                     {item.title}
                   </h3>
                   <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-secondary)]">

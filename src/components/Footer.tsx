@@ -1,17 +1,17 @@
 import { Clock3, Mail, MapPin } from 'lucide-react'
 import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-import { company, navLinks, services } from '../data/content'
+import { company, footerNavLinks, services } from '../data/content'
 import { Logo } from './Logo'
 
 const COPYRIGHT_YEAR = 2026
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[var(--brand-teal)] text-[var(--text-on-dark)]">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(248,88,16,0.55),transparent)]" />
+    <footer className="relative overflow-hidden bg-[var(--background-deep)] text-[var(--text-on-dark)]">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(248,88,16,0.6),transparent)]" />
 
-      <div className="container-nx grid gap-7 py-8 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1.1fr] lg:gap-8 lg:py-9">
+      <div className="container-nx grid gap-8 py-10 md:grid-cols-2 lg:grid-cols-[1.2fr_1.1fr_0.9fr_1.05fr] lg:gap-8 lg:py-12">
         <div>
           <div className="inline-flex">
             <Logo className="brightness-0 invert" />
@@ -43,11 +43,11 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="text-sm font-bold tracking-wide text-white">Navigation</h3>
-          <ul className="mt-3 space-y-2">
-            {navLinks.map((link) => (
+          <h3 className="text-sm font-bold tracking-wide text-white">Explore</h3>
+          <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2">
+            {footerNavLinks.map((link) => (
               <li key={link.label}>
-                <Link to={link.href} className="text-sm text-white/70 transition hover:text-[var(--brand-orange)]">
+                <Link to={link.href} className="text-sm text-white/75 transition hover:text-[var(--brand-orange)]">
                   {link.label}
                 </Link>
               </li>

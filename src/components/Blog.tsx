@@ -54,7 +54,7 @@ export function Blog() {
               aria-hidden="true"
               className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(24,52,64,0.25)_0%,rgba(233,229,223,0.65)_60%,var(--background-elevated)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,46,56,0.24)_0%,rgba(209,217,216,0.75)_60%,var(--background-elevated)_100%)]" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_40%,rgba(248,88,16,0.1),transparent_45%)]" />
           </div>
 

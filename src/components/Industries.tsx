@@ -52,7 +52,7 @@ export function Industries() {
               {industries.map((item) => (
                 <StaggerItem key={item.title}>
                   <article className="rounded-[20px] border border-white/20 bg-white/12 p-4 backdrop-blur-md sm:p-5">
-                    <h4 className="font-[family-name:var(--font-display)] text-base font-bold text-white">
+                    <h4 className="text-base font-bold tracking-tight text-white">
                       {item.title}
                     </h4>
                     <p className="mt-2 text-sm leading-relaxed text-white/78">{item.detail}</p>
